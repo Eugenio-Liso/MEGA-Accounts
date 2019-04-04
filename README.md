@@ -1,9 +1,8 @@
 TrashMail.net disposable email address
 ======================================
+# What is this?
 
-* Author:  Laszlo Szathmary, 2013 (<jabba.laci@gmail.com>)
-* Website: <http://ubuntuincident.wordpress.com/2013/04/13/trashmail/>
-* GitHub:  <https://github.com/jabbalaci/TrashMail.net-disposable-email-address>
+Automates the creation of MEGA accounts. Only for test purposes and not all the steps can be automated.
 
 Creates a disposable email address on TrashMail.net (<https://ssl.trashmail.net/>).
 
@@ -12,14 +11,13 @@ credentials you can access the address manager of TrashMail.net. Emails will be
 redirected to the address that you set upon registration.
 
 Then, you must provide your credentials to this script. Either you
-hard-code it in the source (USERNAME and PASSWORD variables), or
-you provide them interactively.
+hard-code it in the source (USERNAME and PASSWORD variables), and how many emails you want to generate.
 
-The script will create a disposable email address for you on TrashMail.net.
-The newly created email address will be copied to the clipboard (for this
-you must have the "xsel" command installed on your system).
+# Prerequisites
 
-Tested under Linux with Python 2.7.
+Install Python 2.7 and MEGAcmd available at this link: https://github.com/meganz/MEGAcmd
+
+For ArchLinux, install the AUR package megacmd-bin. If you use `yay`, install it with `yay -S megacmd-bin`
 
 Usage
 -----
@@ -29,6 +27,16 @@ Usage
 Sample output:
 
     prcb107f@trashmail.net
+    dwadw221f@trashmail.net
+    ...
+
+After this, login to your 'main account' and invite the emails and do the signup of temporary_users by calling the script `mega-invite-signup-emails.sh`
+
+```
+	bash mega-invite-signup-emails.sh main_account_email "foo@bar.com lol@asd.org" # With spaces
+```
+
+Now you have to accept ALL the confirmation emails manually (there is no other way AFAIK).
 
 Then use the script `mega-login-email.sh` to login to all the emails. Sample usage is:
 
@@ -36,4 +44,20 @@ Then use the script `mega-login-email.sh` to login to all the emails. Sample usa
 	bash mega-login-email.sh "foo@bar.com lol@asd.org" # With spaces
 ```
 
-Currently, the script prompts for a password, THAT WILL BE THE SAME FOR ALL THE EMAILS
+Last step (MAYBE), is to login in MegaSync for every account MANUALLY.
+
+P.S: Note the `""`, if those does not work, try with `''`.
+
+Currently, the `mega-login-email.sh` script prompts for a single password, THAT WILL BE THE SAME FOR ALL THE EMAILS.
+
+## TODO
+
+- See if this suffice or must trigger mega-sync application in some ways.
+
+## Fork
+
+This project is forked from: https://github.com/jabbalaci/TrashMail.net-disposable-email-address. Thanks Laszlo!
+
+# License
+
+GNU General Public License v3.0 available in file LICENSE.

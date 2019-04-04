@@ -18,6 +18,7 @@ import re
 import json
 import requests
 import sys
+import time
 
 import utils
 from clipboard import text_to_clipboards
@@ -101,6 +102,7 @@ def main(num_emails_to_generate):
         # print '# copied to the clipboard'
 
         print email
+        time.sleep(1) #Prevents too many requests
 
 #############################################################################
 

@@ -1,5 +1,3 @@
-TrashMail.net disposable email address
-======================================
 # What is this?
 
 Automates the creation of MEGA accounts. Only for test purposes and not all the steps can be automated.

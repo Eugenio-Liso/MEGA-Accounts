@@ -24,9 +24,16 @@ Tested under Linux with Python 2.7.
 Usage
 -----
 
-    ./trashmail.py
+    python2.7 trashmail.py USERNAME PASSWORD NUM_OF_EMAILS_YOU_WANT
 
 Sample output:
 
-    # copied to the clipboard
     prcb107f@trashmail.net
+
+Then use the script `mega-login-email.sh` to login to all the emails. Sample usage is:
+
+```
+	bash mega-login-email.sh "foo@bar.com lol@asd.org" # With spaces
+```
+
+Currently, the script prompts for a password, THAT WILL BE THE SAME FOR ALL THE EMAILS

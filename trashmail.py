@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-
+#!/usr/bin/env python2.7
 """
 Create a temporary (disposable) email address on trashmail.net .
 
@@ -18,6 +17,7 @@ https://github.com/jabbalaci/TrashMail.net-disposable-email-address
 import re
 import json
 import requests
+import sys
 
 import utils
 from clipboard import text_to_clipboards
@@ -89,23 +89,29 @@ def create_temp_email(session_id, real_email):
     return temp_email
 
 
-def main():
-    session_id, real_email = get_session_id_and_real_email()
-    email = create_temp_email(session_id, real_email)
+def main(num_emails_to_generate):
+    for x in range(0, int(num_emails_to_generate)):
+        session_id, real_email = get_session_id_and_real_email()
+        email = create_temp_email(session_id, real_email)
 
-    # Uncomment to copy email to clipboard
-    # Requires "xsel"
+        # Uncomment to copy email to clipboard
+        # Requires "xsel"
 
-    # text_to_clipboards(email)
-    # print '# copied to the clipboard'
+        # text_to_clipboards(email)
+        # print '# copied to the clipboard'
 
-    print email
+        print email
 
 #############################################################################
 
 if __name__ == "__main__":
+
+    USERNAME = sys.argv[1]
+    PASSWORD = sys.argv[2]
+    NUMBER_OF_FAKE_EMAILS = sys.argv[3]
+
     if USERNAME and PASSWORD:
-        main()
+        main(NUMBER_OF_FAKE_EMAILS)
     else:
         print """Create a TrashMail.net disposable email address
 You must provide the username and password that you use
@@ -118,4 +124,4 @@ on trashmail.net to access the address manager"""
             PASSWORD = raw_input("Password: ")
         else:
             print "Password:", '*' * len(PASSWORD)
-        main()
+        main(NUMBER_OF_FAKE_EMAILS)
